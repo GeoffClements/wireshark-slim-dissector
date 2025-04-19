@@ -1,7 +1,7 @@
 do
 
    -- obsolete and incomplete protocol reference:
-   -- http://wiki.slimdevices.com/index.php/SlimProto_TCP_protocol
+   -- https://lyrion.org/reference/slimproto-protocol/
 
    local p_slim = Proto("SLIM", "Lyrion Music Server Control Protocol")
    local dissector = { client = {}, server = {} }
@@ -146,13 +146,13 @@ do
          audf = {},
 
          audg = {
-            old_gain               = ProtoField.uint32("slim.server.audg.old_gain", "Old gain", base.DEC),
-            old_gain_1             = ProtoField.uint32("slim.server.audg.old_gain_1", "Old gain (1)", base.DEC),
+            old_gain               = ProtoField.uint32("slim.server.audg.old_gain", "Old gain (left)", base.DEC),
+            old_gain_1             = ProtoField.uint32("slim.server.audg.old_gain_1", "Old gain (right)", base.DEC),
             digital_volume_control = ProtoField.uint8("slim.server.audg.digital_volume_control",
                                                       "Digital volume control", base.DEC),
             preamp                 = ProtoField.uint8("slim.server.audg.preamp", "Preamp", base.DEC),
-            new_gain               = ProtoField.uint32("slim.server.audg.new_gain", "New gain", base.DEC),
-            new_gain_1             = ProtoField.uint32("slim.server.audg.new_gain_1", "New gain (1)", base.DEC),
+            new_gain               = ProtoField.uint32("slim.server.audg.new_gain", "New gain (left)", base.DEC),
+            new_gain_1             = ProtoField.uint32("slim.server.audg.new_gain_1", "New gain (right)", base.DEC),
             sequence_number        = ProtoField.uint32("slim.server.audg.sequence_number",
                                                        "Sequence number", base.DEC),
          },
