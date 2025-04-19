@@ -3,20 +3,20 @@ do
    -- obsolete and incomplete protocol reference:
    -- http://wiki.slimdevices.com/index.php/SlimProto_TCP_protocol
 
-   local p_slim = Proto("slim", "SLIM")
+   local p_slim = Proto("SLIM", "Lyrion Music Server Control Protocol")
    local dissector = { client = {}, server = {} }
 
    local fields = {
       client = {
          code = ProtoField.string("slim.client.code", "Client Code"),
          len  = ProtoField.uint32("slim.client.length", "Length", base.DEC),
-         data = ProtoField.bytes("slim.client.data", "Data", base.HEX),
+         data = ProtoField.bytes("slim.client.data", "Data", base.NONE),
 
          helo = {
             device_id        = ProtoField.uint8("slim.client.helo.device_id", "DeviceID", base.DEC),
             revision         = ProtoField.uint8("slim.client.helo.revision", "Revision", base.DEC),
             mac              = ProtoField.ether("slim.client.helo.mac", "MAC"),
-            uuid             = ProtoField.bytes("slim.client.helo.uuid", "UUID", base.HEX),
+            uuid             = ProtoField.bytes("slim.client.helo.uuid", "UUID", base.NONE),
             wlan_channellist = ProtoField.uint16("slim.client.helo.wlan_channellist",
                                                  "WLAN channel list", base.HEX),
             bytes_received   = ProtoField.uint64("slim.client.helo.bytes_received",
@@ -134,7 +134,7 @@ do
       server = {
          len  = ProtoField.uint16("slim.server.length", "Length", base.DEC),
          code = ProtoField.string("slim.server.code", "Server Code"),
-         data = ProtoField.bytes("slim.server.data", "Data", base.HEX),
+         data = ProtoField.bytes("slim.server.data", "Data", base.NONE),
 
          audc = {},
 
